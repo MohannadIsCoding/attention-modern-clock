@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attention — Modern Clock to increase productivity</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="loading-container loading">
+    <div class="loading-icon">
+      <img src="https://img.icons8.com/?size=100&id=6UucmpN78Ig0&format=png&color=111111" alt="">
+    </div>
+  </div>
+  <div class="layout">
+
+    <div class="controls">
+      <div class="container">
+        <div class="checkboxes">
+          <div class="row">
+            <p>primary lines</p>
+            <div class="checkbox lines enabled" id="hours-lines" onclick="((e) => enableCheckbox(e))(this)">
+              <div class="dot">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <p>secondary lines</p>
+            <div class="checkbox lines enabled" id="mins-lines" onclick="((e) => enableCheckbox(e))(this)">
+              <div class="dot">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <div class="button" id="toggle-controls-menu" onclick="toggleControlMenu()">
+          <img src="https://img.icons8.com/?size=100&id=4511GGVppfIx&format=png&color=eeeeee" alt="">
+        </div>
+        <!-- <div class="button" id="toggle-times-menu" onclick="toggleControlMenu()">
+          <img src="https://img.icons8.com/?size=100&id=G9JqmoUherxM&format=png&color=eeeeee" alt="">
+        </div> -->
+      </div>
+    </div>
+    <div class="clock">
+      <div class="pin"></div>
+      <div class="hours-lines enabled">
+        <!-- <div class="line" style="--h-position: 0"></div> -->
+      </div>
+      <div class="mins-lines enabled">
+        <!-- <div class="line" style="--m-position: 0"></div> -->
+      </div>
+      <div class="arrows">
+        <div class="arrow" id="h"></div>
+        <div class="arrow" id="m"></div>
+        <div class="arrow" id="s"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="app.js"></script>
+
+</html>
