@@ -249,6 +249,8 @@ body {
     border-radius: 40% 40% 0 0;
     background-color: #070707;
     corner-shape: superellipse(-2.2);
+    justify-content: center;
+    align-items: end;
     /* transition: transform 0.1s ease;
     transition- */
   }
@@ -266,8 +268,21 @@ body {
 
   &#s {
     height: 46dvh;
-    background-color: rgb(219, 31, 31);
+    background-color: #db1f1f;
     width: 4px;
+
+    &::before {
+      content: " ";
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      font-size: 0;
+      padding: 1rem;
+      /* border-radius: 50%; */
+      background-color: #db1f1f;
+      translate: 0 50%;
+      clip-path: circle(32% at center);
+    }
   }
 }
 
