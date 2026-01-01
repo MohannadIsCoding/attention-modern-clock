@@ -17,31 +17,76 @@
   <div class="layout">
 
     <div class="controls">
-      <div class="container">
-        <div class="checkboxes">
-          <div class="row">
-            <p>primary lines</p>
-            <div class="checkbox lines enabled" id="hours-lines" onclick="((e) => enableCheckbox(e))(this)">
-              <div class="dot">
+      <div class="menus">
+        <div class="container" id="toggle-controls-menu">
+          <div class="titles">
+            <p>settings</p>
+          </div>
+          <div class="rows">
+            <div class="row">
+              <p>primary lines</p>
+              <div class="checkbox lines enabled" id="hours-lines" onclick="((e) => enableCheckbox(e))(this)">
+                <div class="dot">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <p>secondary lines</p>
+              <div class="checkbox lines enabled" id="mins-lines" onclick="((e) => enableCheckbox(e))(this)">
+                <div class="dot">
+                </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <p>secondary lines</p>
-            <div class="checkbox lines enabled" id="mins-lines" onclick="((e) => enableCheckbox(e))(this)">
-              <div class="dot">
+        </div>
+        <div class="container" id="toggle-times-menu">
+          <div class="titles">
+            <p>timer</p>
+          </div>
+          <div class="rows">
+            <div class="row">
+              <p>focus time</p>
+              <div class="select">
+                <div class="button" id="focus-time" onclick="((e) => increaseTime(e))(this)">+</div>
+                <div class="indicator" id="focus-time">
+                  <p>25mins</p>
+                </div>
+                <div class="button" id="focus-time" onclick="((e) => decreaseTime(e))(this)">-</div>
+              </div>
+            </div>
+            <div class="row">
+              <p>rest time</p>
+              <div class="select">
+                <div class="button" id="break-time" onclick="((e) => increaseTime(e))(this)">+</div>
+                <div class="indicator" id="break-time">
+                  <p>5mins</p>
+                </div>
+                <div class="button" id="break-time" onclick="((e) => decreaseTime(e))(this)">-</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="buttons">
+                <div class="button" id="focus" onclick="(() => startFocus())()">
+                  <p>focus</p>
+                </div>
+                <div class="button">
+                  <p>break</p>
+                </div>
+                <div class="button">
+                  <p>stop</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="buttons">
-        <div class="button" id="toggle-controls-menu" onclick="toggleControlMenu()">
+        <div class="button" id="toggle-controls-menu" onclick="((e) => toggleControlMenu(e))(this)">
           <img src="https://img.icons8.com/?size=100&id=4511GGVppfIx&format=png&color=eeeeee" alt="">
         </div>
-        <!-- <div class="button" id="toggle-times-menu" onclick="toggleControlMenu()">
+        <div class="button" id="toggle-times-menu" onclick="((e) => toggleControlMenu(e))(this)">
           <img src="https://img.icons8.com/?size=100&id=G9JqmoUherxM&format=png&color=eeeeee" alt="">
-        </div> -->
+        </div>
       </div>
     </div>
     <div class="clock">
