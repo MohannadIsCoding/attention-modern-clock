@@ -87,7 +87,6 @@ const toggleFocus = () => {
     }
     timer.s += 1
     rotateArrows(timer)
-    console.log(timer);
 
     setTimeout(() => focusMode(timer), 1000)
   }
