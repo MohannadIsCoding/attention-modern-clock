@@ -72,13 +72,11 @@ const toggleControlMenu = (e) => {
   container.classList.toggle('open')
 }
 
-const startFocus = () => {
-  if (isFocusModeEnabled) return
-  isFocusModeEnabled = true
-  focusButton.classList.add('enabled')
-  focusButton.querySelector('p').textContent = 'pause'
-  arrows.h.classList.add('hidden')
-  // document.getElementById(`h-${times.focus / 5}`).classList.add('selected')
+const toggleFocus = () => {
+  focusButton.classList.toggle('enabled')
+  arrows.h.classList.toggle('hidden')
+  isFocusModeEnabled = focusButton.classList.contains('enabled')
+  focusButton.querySelector('p').textContent = isFocusModeEnabled ? 'pause' : 'focus'
 
   const focusMode = (timer = { h: 0, m: 0, s: 0, ms: 0 }) => {
     if (!isFocusModeEnabled) return
@@ -93,23 +91,19 @@ const startFocus = () => {
 
     setTimeout(() => focusMode(timer), 1000)
   }
-  focusMode()
+  if (isFocusModeEnabled) {
+    highlightIndicators()
+    focusMode()
+  }
+  else {
+    resetHighlightedIndicators()
+    getLocalTime()
+  }
 }
 
 
 const highlightIndicators = () => {
-  const hlines = hoursIndicatorWrapper.querySelectorAll('.line')
-  const mlines = minsIndicatorWrapper.querySelectorAll('.line')
-  hlines.forEach((line) => {
-    if (
-      line.classList.contains('selected'))
-      line.classList.remove('selected')
-  })
-  mlines.forEach((line) => {
-    if (
-      line.classList.contains('selected'))
-      line.classList.remove('selected')
-  })
+  resetHighlightedIndicators()
   for (let i = 0; i <= times.focus; i++) {
     const line = document.getElementById(`h-${i / 5}`)
     if (!line) continue
@@ -123,6 +117,20 @@ const highlightIndicators = () => {
     line.classList.add('selected')
   }
 
+}
+
+const resetHighlightedIndicators = () => {
+  const hlines = hoursIndicatorWrapper.querySelectorAll('.line')
+  const mlines = minsIndicatorWrapper.querySelectorAll('.line')
+  hlines.forEach((line) => {
+    if (line.classList.contains('selected'))
+      line.classList.remove('selected')
+  })
+  mlines.forEach((line) => {
+    if (
+      line.classList.contains('selected'))
+      line.classList.remove('selected')
+  })
 }
 
 
@@ -145,7 +153,7 @@ const increaseTime = (e) => {
     case 'focus-time':
       if (times.focus >= 60) break;
       times.focus += 5
-      highlightIndicators()
+      if (isFocusModeEnabled || isBreakModeEnabled) highlightIndicators()
       time.textContent = `${times.focus}mins`
       break;
     case 'break-time':
@@ -166,7 +174,7 @@ const decreaseTime = (e) => {
     case 'focus-time':
       if (times.focus <= 5) break;
       times.focus -= 5
-      highlightIndicators()
+      if (isFocusModeEnabled || isBreakModeEnabled) highlightIndicators()
       time.textContent = `${times.focus}mins`
       break;
     case 'break-time':
